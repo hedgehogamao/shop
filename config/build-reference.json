@@ -1,0 +1,27 @@
+{
+  "name": "9800X3D 无独立显卡主机",
+  "reference_price": "8239.00",
+  "currency": "CNY",
+  "price_source": "用户提供的折后报价及配置截图",
+  "verified_live": false,
+  "retailer": "鑫仕达专营店",
+  "url": null,
+  "target_price": null,
+  "components": [
+    {"category": "CPU", "name": "AMD Ryzen 7 9800X3D", "details": "8 核 16 线程，散片"},
+    {"category": "主板", "name": "华硕 B850M AYW GAMING WIFI", "upgrade": "截图承诺免费升级：华硕 TUF B850M-PLUS 重炮手 WIFI7"},
+    {"category": "散热", "name": "SJ-080 360 一体式水冷", "upgrade": "截图承诺免费升级：爱国者冰魄 R360 PRO，3.95 寸屏"},
+    {"category": "内存", "name": "雷克沙 雷神之锤 32GB（16GB×2）DDR5-6000", "upgrade": "截图承诺免费升级：科摩思 32GB（16GB×2）6000 C28 A-die"},
+    {"category": "硬盘", "name": "雷克沙 雷神 PRO 1TB", "details": "截图标注读取 7000MB/s，未提供完整料号"},
+    {"category": "显卡", "name": "不含独立显卡", "included": false},
+    {"category": "电源", "name": "Thermaltake BM3 额定 1000W", "details": "截图标注铜牌模组"},
+    {"category": "机箱", "name": "爱国者 G10 Lexar 纪念版", "details": "全视海景房；默认不含机箱风扇"}
+  ],
+  "notes": [
+    "¥8,239 是用户提供的整机折后参考报价，不是实时采集价或购买目标价。",
+    "不含独立显卡；默认不含机箱风扇。",
+    "免费升级及整机三年质保为截图中的商家描述，需与实际订单确认。",
+    "商品链接、具体平台、优惠条件、运费和最终结算金额尚未核实。",
+    "比价应保持相同的配件规格、升级选项、商家售后与显卡/风扇包含范围。"
+  ]
+}

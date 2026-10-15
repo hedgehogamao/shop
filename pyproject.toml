@@ -1,0 +1,17 @@
+[project]
+name = "shop-price-monitor"
+version = "0.1.0"
+description = "商品与电脑配件价格监测、历史记录和目标价提醒"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.34,<1",
+  "httpx>=0.28,<1",
+  "beautifulsoup4>=4.13,<5",
+]
+
+[dependency-groups]
+dev = ["httpx>=0.28,<1"]
+
+[tool.uv]
+package = false

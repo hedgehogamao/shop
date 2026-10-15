@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142c26">
+  <title>拾价 · 价格监测</title>
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="拾价首页"><span class="brand-mark">↘</span><span>拾价<small>PRICE WATCH</small></span></a>
+    <div class="workspace-label">我的工作空间</div>
+    <nav aria-label="主导航"><a class="nav-item active" href="#watchlist"><span aria-hidden="true">▦</span> 价格监测 <span id="nav-count" class="nav-count">0</span></a></nav>
+    <div class="rail-note"><span class="note-orbit" aria-hidden="true">◎</span><h3>好价格，值得等。</h3><p>记录每一次价格变化，<br>让购买多一点从容。</p></div>
+    <div class="sidebar-footer"><span class="online-dot"></span><span id="service-text">正在连接服务</span><small>数据保存在当前服务</small></div>
+  </aside>
+  <main>
+    <header class="topbar"><span class="breadcrumb">工作空间 <span>/</span> <strong>价格监测</strong></span><span class="topbar-label"><span class="online-dot"></span> 你的价格观察站</span></header>
+    <section class="page-intro"><div><div class="eyebrow">LESS GUESSING. BETTER BUYING.</div><h1>把握价格，<span>从容入手。</span></h1><p>把心仪商品放在这里，让每一次价格变化都有迹可循。</p></div><button class="button primary" id="add-product"><span aria-hidden="true">＋</span> 添加监测商品</button></section>
+    <section class="stats" aria-label="监测概览">
+      <article class="stat"><span class="stat-label">监测商品 <span aria-hidden="true">↗</span></span><div><strong id="stat-total">0</strong><span>件商品</span></div><p>你的商品观察清单</p></article>
+      <article class="stat"><span class="stat-label">正在监测 <span class="green-dot" aria-hidden="true"></span></span><div><strong id="stat-active">0</strong><span>件商品</span></div><p>按设定的频率自动检查</p></article>
+      <article class="stat"><span class="stat-label">已达目标价 <span aria-hidden="true">↘</span></span><div><strong id="stat-alert">0</strong><span>件商品</span></div><p>价格已达到你的期待</p></article>
+    </section>
+    <section id="reference-section" class="reference-panel" hidden aria-labelledby="reference-title"></section>
+    <section id="watchlist" class="watchlist" aria-labelledby="watchlist-title">
+      <div class="section-heading"><div><h2 id="watchlist-title">我的监测清单 <span id="list-count">0</span></h2><p>关注价格走势，找到合适的入手时机</p></div><button class="button secondary" id="refresh-all"><span aria-hidden="true">↻</span> 检查全部</button></div>
+      <div class="toolbar"><div class="filters" role="group" aria-label="筛选监测商品"><button class="filter selected" data-filter="all" aria-pressed="true">全部商品</button><button class="filter" data-filter="active" aria-pressed="false">监测中</button><button class="filter" data-filter="alert" aria-pressed="false">已达目标</button><button class="filter" data-filter="paused" aria-pressed="false">已暂停</button></div><label class="search"><span aria-hidden="true">⌕</span><input type="search" id="search" placeholder="搜索商品或店铺…" aria-label="搜索商品或网站"></label></div>
+      <div id="page-error" class="error-banner" role="alert" hidden></div>
+      <div id="product-list" class="product-grid" aria-live="polite"><div class="loading-state">正在载入监测清单…</div></div>
+    </section>
+    <footer class="page-footer"><span>拾价 · 让每一分花得值得</span><span>页面价格仅供参考，成交价以商家结算页为准</span></footer>
+  </main>
+  <dialog id="product-dialog" aria-labelledby="dialog-title">
+    <form id="product-form">
+      <div class="dialog-heading"><div><div class="eyebrow">YOUR NEXT GOOD FIND</div><h2 id="dialog-title">添加监测商品</h2></div><button class="icon-button" type="button" data-close="product-dialog" aria-label="关闭">×</button></div>
+      <p class="dialog-description">粘贴商品链接，设定你的理想价格。</p>
+      <label class="field">商品链接 <span class="required">*</span><input name="url" type="url" placeholder="https://example.com/product" required maxlength="2048"><small>支持公开商品网页；需登录或动态加载的页面可能无法读取。</small></label>
+      <label class="field">商品名称 <span class="optional">选填</span><input name="name" placeholder="给心仪商品起个名字" maxlength="200"></label>
+      <div class="form-row"><label class="field">货币<select name="currency"><option value="CNY">CNY · 人民币</option><option value="USD">USD · 美元</option><option value="HKD">HKD · 港币</option><option value="EUR">EUR · 欧元</option><option value="JPY">JPY · 日元</option><option value="GBP">GBP · 英镑</option><option value="TWD">TWD · 新台币</option></select></label><label class="field">目标价格 <span class="optional">选填</span><input name="target_price" type="number" step="0.0001" min="0" max="1000000000" placeholder="你的理想入手价"></label></div>
+      <p id="currency-hint" class="field-hint" hidden>货币改变后请重新填写目标价。</p>
+      <label class="field">检查频率<select name="interval_minutes"><option value="15">每 15 分钟</option><option value="30">每 30 分钟</option><option value="60" selected>每 1 小时</option><option value="180">每 3 小时</option><option value="360">每 6 小时</option><option value="720">每 12 小时</option><option value="1440">每天</option></select></label>
+      <details class="advanced"><summary>高级设置</summary><label class="field">价格 CSS 选择器 <span class="optional">选填</span><input name="selector" placeholder="例如 .product-price" maxlength="500"><small>留空将自动识别网页中的商品结构化价格。识别失败时可指定。</small></label></details>
+      <p id="form-error" class="form-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button class="button secondary" type="button" data-close="product-dialog">取消</button><button class="button primary" type="submit" id="save-product">开始监测</button></div>
+    </form>
+  </dialog>
+  <dialog id="delete-dialog" class="small-dialog" aria-labelledby="delete-title"><div class="dialog-heading"><h2 id="delete-title">删除这件商品？</h2><button class="icon-button" type="button" data-close="delete-dialog" aria-label="关闭">×</button></div><p id="delete-description"></p><p class="muted">该商品的监测记录也会一起删除，此操作无法撤销。</p><p id="delete-error" class="form-error" role="alert" hidden></p><div class="dialog-actions"><button class="button secondary" type="button" data-close="delete-dialog">保留商品</button><button class="button danger" id="confirm-delete">确认删除</button></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>
